@@ -1,0 +1,14 @@
+[{
+    "name": "Penny",
+    "email": "penny@domain.com",
+    "password": "12345",
+    "category": "admin"
+},
+{
+    "name": "Pen",
+    "email": "pen@domain.com",
+    "password": "12345",
+    "orderHistory": [],
+    "category": "user"
+}
+]

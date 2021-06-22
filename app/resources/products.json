@@ -1,0 +1,20 @@
+[{
+    "name": "milk",
+    "price": "2",
+    "desc": "Dairy milk",
+    "category" :  "dairy products",
+    "stock": "100"
+}, {
+    "name": "yogurt",
+    "price": "2",
+    "desc": "Goat yogurt",
+    "category" :  "dairy products",
+    "stock": "100"
+}, {
+    "name": "cheese",
+    "price": "2",
+    "desc": "Cheddar Cheese",
+    "category" :  "dairy products",
+    "stock": "100"
+}
+]
