@@ -1,4 +1,4 @@
-# Ergasia_1_e17098_mavroeidi_panagiota
+# Ergasia_2_e17098_mavroeidi_panagiota
 
 
 # Για την  εκπόνηση της εργασίας τα εργαλεία που θα χρειαστούν είναι τα εξής:
