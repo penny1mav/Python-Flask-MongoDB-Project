@@ -178,5 +178,11 @@
 
 ![update](https://user-images.githubusercontent.com/62929706/122967797-8500af80-d393-11eb-8a62-e81a6ceb71c3.jpg)
 
+Αυτο που μας μενει ειναι να κανουμε docker compose την εργασια.
 
+ανοιγουμε το vmware το συνδεουμε με ubuntu και ανοιγουμε το terminal
+
+στη συνεχεια κανουμε copy paste τους κωδικες του app.py DockerFile και docker-compose.yml σε 3 διαφορετικα scriptakia
+
+στο τελος κανουμε docker build το app.py για να φτιαξουμε το Image της εργασιας και τελος κανουμε docker-compose up 
 
