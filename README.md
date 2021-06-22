@@ -29,12 +29,12 @@
 ~Αν το email δεν υπαρχει στο db(database), εκχωρείται το username και password στο Mongo DB με ονομα users. Στην περίπτωση επιτυχίας μας γυρνάει το Postman ως response το παρακάτω
 
 
-![user_added](https://user-images.githubusercontent.com/62929706/119018219-8c075d00-b9a4-11eb-88da-961351208276.jpg)
+![createUser](https://user-images.githubusercontent.com/62929706/122966987-a745fd80-d392-11eb-9938-a042f401eb72.jpg)
 
 
  Μπορούμε να το δούμε εύκολα χρησιμοποιώντας το Mongo db Compass
 
-![user_in_db](https://user-images.githubusercontent.com/62929706/119018587-e56f8c00-b9a4-11eb-84a9-d76acd6917fc.jpg)
+![users](https://user-images.githubusercontent.com/62929706/122967111-ccd30700-d392-11eb-9c8f-52dd6f68cbf0.jpg)
 
 
 # Ερώτημα 2: Login στο σύστημα
@@ -43,8 +43,7 @@
 Στην περίπτωση που ταυτοποιηθεί username και password το Postman γυρνάει ως Response το username που δώσαμε και ενα uuid , μια μεταβλητή που αλλάζει μετά από κάθε login session . Το uuid output θα μας χρειαστεί ως input  στα επόμενα ερωτήματα.
 
 
-![uuid](https://user-images.githubusercontent.com/62929706/119018637-f91af280-b9a4-11eb-8914-44a28a2ed4b1.jpg)
-
+![login](https://user-images.githubusercontent.com/62929706/122967155-d6f50580-d392-11eb-84a7-63ccdbdfe833.jpg)
 
 Στην περίπτωση που ή το username ή το password δεν είναι σωστό το Postman στέλνει ως response " Wrong username or password."
 
@@ -55,6 +54,7 @@
 Για να γίνει επιτυχής σύνδεση στο συστήμα θα πρέπει να κάνουμε αντιγραφή το uuid που μας δώθηκε στο login ως output και να το δηλώσουμε στα headers του postman όπως φαινεται 
 
 παρακάτω
+
 ![wrong_uuid](https://user-images.githubusercontent.com/62929706/119018728-118b0d00-b9a5-11eb-9686-b3145f7c34ba.jpg)
 
 Αυτό ισχύει και για τα επόμενα ερωτήματα . Συνεπώς , θεωρείται δεδομένο κάθε φορά που θα κάνουμε ενα νέο request θα πρέπει να φροντίζουμε να υπάρχει το uuid στα headers
@@ -75,20 +75,56 @@
 
 
 
+
+![getProductById](https://user-images.githubusercontent.com/62929706/122967270-f9871e80-d392-11eb-8b59-530c08e7c55e.jpg)
+
+
+
+
+
+
+
 {}
 
 
 Αν βρεθει προιον βασει κατηγοριας η ονοματος δημιουργειται μια λιστα με dictionaries . Αυτο συμβαινει διοτι το Id του προιοντος ειναι μοναδικο ενω το ονομα ή η κατηγορια ειναι ενα η περισσοτερα
 
+
+![getProductByCategory](https://user-images.githubusercontent.com/62929706/122967239-ef652000-d392-11eb-9530-c030ae75babd.jpg)
+
+
+![getProductByName](https://user-images.githubusercontent.com/62929706/122967304-00159600-d393-11eb-9629-940dd5ece094.jpg)
+
+
+
 #ΕΡΩΤΗΜΑ 4   Προσθηκη προιοντων στο καλαθι
 
 Ο χρηστης εφοσον δωσει τα καταληλα στοιχεια στο body εμφανιζεται  το παρακατω καλαθι σε μορφη Dictionary
 
+
+![shoppingCart](https://user-images.githubusercontent.com/62929706/122967352-0c99ee80-d393-11eb-8174-d2c4641b6527.jpg)
+
+
+
 # ΕΡΩΤΗΜΑ 5 Εμφανιση καλαθιου
+
+
+![getShoppingCart](https://user-images.githubusercontent.com/62929706/122967390-14f22980-d393-11eb-9749-e81359b970ce.jpg)
+
 
 # ΕΡΩΤΗΜΑ 6 Διαγραφη προιοντος απο το καλαθι
 
+
+![deleteCart](https://user-images.githubusercontent.com/62929706/122967425-1f142800-d393-11eb-9042-f34dc500a8b3.jpg)
+
+
+
 # ΕΡΩΤΗΜΑ 9 Διαγραφη του λογαριασμου .
+
+
+
+
+
 ο χρηστης δινει στο body το email του και γινεται η διαγραφη του λογαριασμου του
 
 
@@ -96,11 +132,43 @@
 Για να μπορουμε να κανουμε τις επομενες λειτουργιες θα πρεπει να συνδεθουμε ως διαχειριστης , διοτι ο απλος user δεν εχει access σε αυτα τα endpoints
 τα στοιχεια του admin υπαρχουν και στο Json αρχειο "users"
 
+
+![adminlogin](https://user-images.githubusercontent.com/62929706/122967579-4539c800-d393-11eb-9f8e-cbf1c298565e.jpg)
+
+
+
+
 εφοσον γινεται η επιτυχης συνδεση του admin δινουμε στο body τα εξης στοιχεια και μας επιστρεφει το εξης αποτελεσμα
-{}
+
+
+
+
+![addProduct](https://user-images.githubusercontent.com/62929706/122967603-4d920300-d393-11eb-92f9-7970ff29b39a.jpg)
+
+
+βλεπουμε στο Mongo db compass πως το product ham δημιουργηθηκε
+
+
+![ham](https://user-images.githubusercontent.com/62929706/122967650-5be01f00-d393-11eb-919b-1b5285ffac11.jpg)
+
+
 
 # ΕΡΩΤΗΜΑ 11
 δινουμε στο body το id του προιοντος και γινεται αμεσα η διαγραφη του οπως βλεπουμε παρακατω
 
+
+![deleteham](https://user-images.githubusercontent.com/62929706/122967622-5551a780-d393-11eb-9674-40c621e3ab53.jpg)
+
+
+
+
 # ΕΡΩΤΗΜΑ 12
 δινουμε στο body τις τιμες και οσες θελουμε να αλαχθουν απλα οριζουμε την νεα τιμη τους οπως βλεπουμε παρακατω.
+
+![milkupdated](https://user-images.githubusercontent.com/62929706/122967783-7f0ace80-d393-11eb-9c6c-5791fcfb08cf.jpg)
+
+
+![update](https://user-images.githubusercontent.com/62929706/122967797-8500af80-d393-11eb-8a62-e81a6ceb71c3.jpg)
+
+
+
