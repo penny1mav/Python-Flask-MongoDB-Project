@@ -1,188 +1,192 @@
-# Ergasia_2_e17098_mavroeidi_panagiota
 
+## Χρήσιμα Εργαλεία
 
-# Για την  εκπόνηση της εργασίας τα εργαλεία που θα χρειαστούν είναι τα εξής:
+Τα εργαλεία που θα χρησιμοποιήσουμε την υλοποίηση της εργασίας είναι τα εξής:
 
--editor : Visual Studio Code (κατα προτίμηση)
+•Visual Studio Code: ο editor που θα προτιμήσουμε για την σύνταξη του python κώδικα.  
+•Postman: η πλατφόρμα που θα χρησιμοποιήσουμε για την ανάπτυξη του API.  
+•MongoDBCompass: το GUI που θα μας επιτρέψει να βλέπουμε τι συμβαίνει στη βάση δεδομένων κάθε στιγμή.  
+•Virtual Box: το περιβάλλον που θα χρησιμοποιήσουμε για την εγκατάσταση του ubuntu.  
+•Ubuntu: το λογισμικό που θα υποστηρίξει την υλοποίηση image, docker compose.  
+Αρχικά, θα κάνουμε import  το JSON αρχείο στη MongoDBCompass ώστε να υπάρχει σύνδεση με τη βάση δεδομένων.
+## Ερώτημα 1: createUser/User 
+Υλοποιώντας κλήση της μεθόδου Post, το ανάλογο path και την εισαγωγή σε json μορφή των απαιτούμενων στοιχείων, ο χρήστης μπορεί να στείλει αίτημα για την εγγραφή του στο σύστημα.  
 
--Postman : μέσω του Postman μπορουμε ευκολα να αναπτυξουμε API
+Υστερα πραγματοποιείται έλεγχος αν έχουν δοθεί τα απαιτούμενα δεδομένα, αν η json μορφή είναι η κατάλληλη και αν τηρούνται οι περιορισμοί που έχουν διατυπωθεί. Εφόσον ισχύουν αυτά, η εγγραφή στο σύστημα είναι επιτυχής και πραγματοποιείται καταχώρηση των στοιχείων στη βάση δεδομένων, στην αντίθετη περίπτωση εμφανίζεται το ανάλογο μήνυμα.  
 
--Mongo DB Compass : Ειναι μια εφαρμογή για να βλέπουμε τι συμβαίνει στην βάση δεδομένων καθε στιγμή
+### Επιτυχημένη Εγγραφή - Postman  
+![](screenshots/createUser_1.jpg)  
 
--VMWARE : για την υποστηριξη ι λογισμικou εικονικοποίησης
+### Επιτυχημένη Εγγραφή - Mongo   
+![](screenshots/createUser_4.jpg)  
 
--ubuntu : για την υποστηριξη unix εντολων και την επιτυχη υλοποιηση image , docker compose
+### Αποτυχημένη Εγγραφή (failure = existing name) - Postman
+![](screenshots/createUser_2.jpg)  
 
+### Αποτυχημένη Εγγραφή (failure = existing passport) - Postman  
+![](screenshots/createUser_3.jpg)  
 
-Αρχικά θα χρειαστει να κάνουμε import το υπάρχον JSON αρχείο στο Mongo DB Compass ωστε να μπορουμε να εχουμε ανταπόκριση με την βάση δεδομένων
+### Αποτυχημένη Εγγραφή (failure = passport form) - Postman     
+![](screenshots/createUser_5.jpg)   
 
+## Ερώτημα 2: Login/User  
+Δίνοντας ως input ένα email ή ένα username και τον ανάλογο κωδικό, θα υλοποιηθεί ένας έλεγχος εγκυρότητας των στοιχείων μέσα στη βάση δεδομένων. Εάν υπάρξει ταυτοποίηση, το Postman επιστρέφει ως response το email δώθηκε και ένα uuid, μία μεταβλητή που θα που θα αλλάζει μετά από κάθε login session, η οποία θα μας φανεί χρήσιμη για την υλοποίηση των ακόλουθων ερωτημάτων.  
 
-# Ερωτημα 1 : Δημιουργία χρήστη
+### Επιτυχημένo Login (email) - Postman  
+![](screenshots/login_2.jpg)  
 
-~Στην περίπτωση που:
- δεν εχουμε εκχωρίσει σωστά τα δεδομένα στο Body μέσω postman
- δεν εχουμε στείλει το σωστό request(εν προκειμενει POST) και
- δεν έχουμε εκχωρίσει όλα τα απαραίτητα στοιχεία
-  θα υπάρξει error status 500 .
+### Επιτυχημένo Login (name) - Postman   
+![](screenshots/login_4.jpg)    
 
-~Εφοσον εχουμε κανει λοιπον σωστά τα παραπάνω, η εφαρμογή  δέχεται ως input το username και το password που εχουμε ορίσει στο body του Postman 
+### Αποτυχημένο Login (failure = wrong password) - Postman  
+![](screenshots/login_3.jpg)    
 
+### Αποτυχημένο Login (failure = wrong name) - Postman  
+![](screenshots/login_1.jpg)  
 
-~Πρωτού εκτελεστεί η εντολή που έχουμε ορίσει στο Postman, γίνεται έλεγχος αν το username υπαρχει ήδη στην βαση δεδομένων users.Αν το username υπάρχει τότε το postman μας στέλνει response ότι ο user υπάρχει ήδη
+## Ερώτημα 3: getFlight/User    
+H υλοποίηση του ερωτήματος προϋποθέτει τη σύνδεση στο σύστημα, η οποία πραγματοποιείται κάνοντας αντιγραφή το uuid που δόθηκε ως  output κατά το login και τη δήλωση του στους headers του Postman. Την ίδια διαδικασία θα ακολουθήσουμε και στα επόμενα ερωτήματα, ενώ σε περίπτωση που δεν βάλουμε το σωστό uuid, ως response θα λάβουμε “user is not authenticated” και απαραίτητο είναι να γίνει login εκ νέου.  
 
-~Αν το email δεν υπαρχει στο db(database), εκχωρείται το username και password στο Mongo DB με ονομα users. Στην περίπτωση επιτυχίας μας γυρνάει το Postman ως response το παρακάτω
+![](screenshots/getFlight_1.jpg)  
 
+Η επιτυχής ολοκλήρωση του authentication, επιτρέπει την αποδοχή input για την αναζήτηση της πτήσης, το οποίο θα περιλαμβάνει τον προορισμό, την αναχώρηση και την ημερομηνία. Ύστερα υλοποιείται μία αναζήτηση στα Flights προκειμένου να εντοπιστεί αν υπάρχει κάποια διαθέσιμη πτήση που να πληροί τα κριτήρια που δόθηκαν στο  input. Στη περίπτωση που δεν υπάρχει το output θα είναι το ανάλογο, ενώ εφόσον υπάρχει δημιουργείται ένα dictionary που δέχεται και αποθηκεύει τις τιμές της βάσης και αφού το κάνει, το Postman αποστέλλει τις τιμές αυτές ως response σε μορφή json.  
 
-![createUser](https://user-images.githubusercontent.com/62929706/122966987-a745fd80-d392-11eb-9938-a042f401eb72.jpg)
+### Επιτυχημένo getFlight - Postman  
+![](screenshots/getFlight_2.jpg)   
 
+### Επιτυχημένo getFlight - Mongo  
+![](screenshots/getFlight_4.jpg)  
 
- Μπορούμε να το δούμε εύκολα χρησιμοποιώντας το Mongo db Compass
+### Αποτυχημένο getFlight (destination doesnt exist) - Postman  
+![](screenshots/getFlight_3.jpg)  
 
-![users](https://user-images.githubusercontent.com/62929706/122967111-ccd30700-d392-11eb-9c8f-52dd6f68cbf0.jpg)
+## Ερώτημα 4: Booking/User 
+Ομοίως με πριν, η διαδικασία έχει ως εξής:
 
+### Επιτυχημένo booking - Postman  
+![](screenshots/booking_1.jpg)  
 
-# Ερώτημα 2: Login στο σύστημα
+### Επιτυχημένo booking - Mongo 
+![](screenshots/booking_3.jpg)  
 
-Δίνοντας ως input μέσω postman ένα email και password θα γίνει έλεγχος εγκυρότητας μέσα στην βάση δεδομένων.
-Στην περίπτωση που ταυτοποιηθεί username και password το Postman γυρνάει ως Response το username που δώσαμε και ενα uuid , μια μεταβλητή που αλλάζει μετά από κάθε login session . Το uuid output θα μας χρειαστεί ως input  στα επόμενα ερωτήματα.
+### Αποτυχημένο booking (wrong id) - Postman 
+![](screenshots/booking_2.jpg) 
 
+## Ερώτημα 5: getBooking/User 
+Ομοίως με πριν, η διαδικασία έχει ως εξής:  
 
-![login](https://user-images.githubusercontent.com/62929706/122967155-d6f50580-d392-11eb-84a7-63ccdbdfe833.jpg)
+### Επιτυχημένo getBooking - Postman 
+![](screenshots/getBooking_1.jpg) 
 
-Στην περίπτωση που ή το username ή το password δεν είναι σωστό το Postman στέλνει ως response " Wrong username or password."
+### Αποτυχημένο getBooking (wrong id) - Postman 
+![](screenshots/getBooking_2.jpg) 
 
-# Ερώτημα 3 Αναζητηση Προιοντος:
+## Ερώτημα 6: deleteBooking/User 
+Ομοίως με πριν, η διαδικασία έχει ως εξής:   
 
-Στο ερώτημα αυτό έχουμε διαφορετικό error status 500 . Στην περιπτωσή που δεν δώσουμε στο body του Postman το id το ονομα και τη κατηγορια  , μας εμφανίζει information incomplete 
+### Επιτυχημένo deleteBooking - Postman 
+![](screenshots/deleteBooking_1.jpg)   
 
-Για να γίνει επιτυχής σύνδεση στο συστήμα θα πρέπει να κάνουμε αντιγραφή το uuid που μας δώθηκε στο login ως output και να το δηλώσουμε στα headers του postman όπως φαινεται 
+### Επιτυχημένo deleteBooking - Mongo
+![](screenshots/deleteBooking_2.jpg) 
 
-παρακάτω
+## Ερώτημα 7: getBookingDate/User 
+Ομοίως με πριν, η διαδικασία έχει ως εξής:  
 
-![wrong_uuid](https://user-images.githubusercontent.com/62929706/119018728-118b0d00-b9a5-11eb-9686-b3145f7c34ba.jpg)
+### Ascending getBookingDate - Postman 
+![](screenshots/getBookingDate_1.jpg)    
 
-Αυτό ισχύει και για τα επόμενα ερωτήματα . Συνεπώς , θεωρείται δεδομένο κάθε φορά που θα κάνουμε ενα νέο request θα πρέπει να φροντίζουμε να υπάρχει το uuid στα headers
+### Descending getBookingDate - Postman 
+![](screenshots/getBookingDate_2.jpg)    
 
-Στην περίπτωση που δεν βάλουμε το σωστό uuid (πιθανόν λόγω αποσύνδεσης απο το σύστημα πρέπει να γίνει εκ νεου Login)
+## Ερώτημα 8: getBookingPrice/User 
+Ομοίως με πριν, η διαδικασία έχει ως εξής:  
 
-θα βγει ως Response "user is not authenticated". Η χρήση του uuid ισχύει ακριβώς η ίδια και στα επόμενα υποερωτήματα
+### getBookingPrice - Postman 
+![](screenshots/getBookingPrice.jpg)  
 
-Εφόσον λοιπον γίνει επιτυχής authentication η εφαρμογή μας δέχεται ως input τα name category id που έχουμε δηλώσει στο postman. Στην σύνεχεια γίνεται μια αναζήτηση στο products db αν υπάρχει το εκαστοτε προιον ( ή προϊοντα) 
+## Ερώτημα 9: getBookingDestination/User 
+Ομοίως με πριν, η διαδικασία έχει ως εξής:  
 
+### Επιτυχημένo getBookingDestination - Postman
+![](screenshots/getBookingDestination_1.jpg)   
 
+### Επιτυχημένo getBookingDestination - Mongo
+![](screenshots/getBookingDestination_3.jpg)   
 
-Στην περιπτωσή που δεν υπάρχει έχουμε ως response " does not exist "
+### Αποτυχημένο getBookingDestination (destination doesnt exist) - Postman
+![](screenshots/getBookingDestination_2.jpg) 
+ 
+## Ερώτημα 10: getBookingDestination/User 
+Ομοίως με πριν, η διαδικασία έχει ως εξής:
 
-Αν υπάρχει στην βάση δεδομένων γίνεται μια αναζήτηση μέσα σε μια επανάληψη. Εφόσον βρεθεί το προιον βασει id δημιουργείται ενα Dictionary με όνομα product που δέχεται και αποθηκεύει τις
+### Επιτυχημένo disableAccount - Postman
+![](screenshots/disableAccount_1.jpg)    
 
-τιμές της βάσης δεδομένων Αφότου αποθηκεύσει τις τιμές αυτές το postman μας στέλνει ως response το Dictionary σε μορφη json (json.dumps). 
+### Επιτυχημένo disableAccount - Postman
+![](screenshots/disableAccount_2.jpg)  
 
+## Ερώτημα 11: enableAccount/User 
+Ομοίως με πριν, η διαδικασία έχει ως εξής:  
 
+### Επιτυχημένo enableAccount - Postman
+![](screenshots/enableAccount_1.jpg)   
 
+### Επιτυχημένo enableAccount - Postman
+![](screenshots/enableAccount_2.jpg)   
 
-![getProductById](https://user-images.githubusercontent.com/62929706/122967270-f9871e80-d392-11eb-8b59-530c08e7c55e.jpg)
+## Ερώτημα 12: createAdmin/Admin
+Ομοίως με πριν, η διαδικασία έχει ως εξής: 
 
+### Επιτυχημένo createAdmin - Postman
+![](screenshots/createAdmin_1.jpg)   
 
+### Επιτυχημένo createAdmin - Mongo
+![](screenshots/createAdmin_2.jpg) 
 
+### Επιτυχημένo createAdmin - Postman
+![](screenshots/createAdmin_3.jpg)   
 
+## Ερώτημα 13: addFlight/Admin
+Ομοίως με πριν, η διαδικασία έχει ως εξής: 
 
+### Επιτυχημένo addFlight - Postman
+![](screenshots/addFlight_1.jpg)   
 
+### Επιτυχημένo addFlight - Mongo
+![](screenshots/addFlight_2.jpg)    
 
-{}
+## Ερώτημα 14: updateFlight/Admin
+Ομοίως με πριν, η διαδικασία έχει ως εξής: 
 
+### Επιτυχημένo updateFlight - Postman
+![](screenshots/updateFlight_1.jpg)  
 
-Αν βρεθει προιον βασει κατηγοριας η ονοματος δημιουργειται μια λιστα με dictionaries . Αυτο συμβαινει διοτι το Id του προιοντος ειναι μοναδικο ενω το ονομα ή η κατηγορια ειναι ενα η περισσοτερα
+### updateFlight before - Mongo
+![](screenshots/updateFlight_2.jpg)  
 
+### updateFlight after - Mongo
+![](screenshots/updateFlight_3.jpg)   
 
-![getProductByCategory](https://user-images.githubusercontent.com/62929706/122967239-ef652000-d392-11eb-9530-c030ae75babd.jpg)
+### Αποτυχημένο updateFlight (negative price) - Postman
+![](screenshots/updateFlight_4.jpg)   
 
+## Ερώτημα 15: deleteFlight/Admin
+Ομοίως με πριν, η διαδικασία έχει ως εξής: 
 
-![getProductByName](https://user-images.githubusercontent.com/62929706/122967304-00159600-d393-11eb-9629-940dd5ece094.jpg)
+### Επιτυχημένo deleteFlight - Postman
+![](screenshots/deleteFlight_1.jpg)  
 
+### Επιτυχημένo deleteFlight - Mongo
+![](screenshots/deleteFlight_2.jpg)   
 
+### Αποτυχημένο deleteFlight (wrong id) - Postman
+![](screenshots/deleteFlight_3.jpg)  
 
-#ΕΡΩΤΗΜΑ 4   Προσθηκη προιοντων στο καλαθι
 
-Ο χρηστης εφοσον δωσει τα καταληλα στοιχεια στο body εμφανιζεται  το παρακατω καλαθι σε μορφη Dictionary
+Η διαδικασία που ακολουθεί στη συνέχεια είναι να γίνει docker compose η εργασία. Αφού εγκαταστήσουμε το vmware και το ubuntu, κάνουμε επικόλληση τους κώδικες docker σε τρια διαφορετικά σκριπτς. Ύστερα, docker build το app.py ωστε να φτιαχτεί το image της εργασίας και εν τέλει docker compose up.
 
 
-![shoppingCart](https://user-images.githubusercontent.com/62929706/122967352-0c99ee80-d393-11eb-8174-d2c4641b6527.jpg)
 
 
-
-# ΕΡΩΤΗΜΑ 5 Εμφανιση καλαθιου
-
-
-![getShoppingCart](https://user-images.githubusercontent.com/62929706/122967390-14f22980-d393-11eb-9749-e81359b970ce.jpg)
-
-
-# ΕΡΩΤΗΜΑ 6 Διαγραφη προιοντος απο το καλαθι
-
-
-![deleteCart](https://user-images.githubusercontent.com/62929706/122967425-1f142800-d393-11eb-9042-f34dc500a8b3.jpg)
-
-
-
-# ΕΡΩΤΗΜΑ 9 Διαγραφη του λογαριασμου .
-
-
-
-
-
-ο χρηστης δινει στο body το email του και γινεται η διαγραφη του λογαριασμου του
-
-
-![deleteUser](https://user-images.githubusercontent.com/62929706/122968556-5505dc00-d394-11eb-9e9b-49dc9b7f86b3.jpg)
-
-
-
-# ΕΡΩΤΗΜΑ 10
-Για να μπορουμε να κανουμε τις επομενες λειτουργιες θα πρεπει να συνδεθουμε ως διαχειριστης , διοτι ο απλος user δεν εχει access σε αυτα τα endpoints
-τα στοιχεια του admin υπαρχουν και στο Json αρχειο "users"
-
-
-![adminlogin](https://user-images.githubusercontent.com/62929706/122967579-4539c800-d393-11eb-9f8e-cbf1c298565e.jpg)
-
-
-
-
-εφοσον γινεται η επιτυχης συνδεση του admin δινουμε στο body τα εξης στοιχεια και μας επιστρεφει το εξης αποτελεσμα
-
-
-
-
-![addProduct](https://user-images.githubusercontent.com/62929706/122967603-4d920300-d393-11eb-92f9-7970ff29b39a.jpg)
-
-
-βλεπουμε στο Mongo db compass πως το product ham δημιουργηθηκε
-
-
-![ham](https://user-images.githubusercontent.com/62929706/122967650-5be01f00-d393-11eb-919b-1b5285ffac11.jpg)
-
-
-
-# ΕΡΩΤΗΜΑ 11
-δινουμε στο body το id του προιοντος και γινεται αμεσα η διαγραφη του οπως βλεπουμε παρακατω
-
-
-![deleteham](https://user-images.githubusercontent.com/62929706/122967622-5551a780-d393-11eb-9674-40c621e3ab53.jpg)
-
-
-
-
-# ΕΡΩΤΗΜΑ 12
-δινουμε στο body τις τιμες και οσες θελουμε να αλαχθουν απλα οριζουμε την νεα τιμη τους οπως βλεπουμε παρακατω.
-
-![milkupdated](https://user-images.githubusercontent.com/62929706/122967783-7f0ace80-d393-11eb-9c6c-5791fcfb08cf.jpg)
-
-
-![update](https://user-images.githubusercontent.com/62929706/122967797-8500af80-d393-11eb-8a62-e81a6ceb71c3.jpg)
-
-Αυτο που μας μενει ειναι να κανουμε docker compose την εργασια.
-
-ανοιγουμε το vmware το συνδεουμε με ubuntu και ανοιγουμε το terminal
-
-στη συνεχεια κανουμε copy paste τους κωδικες του app.py DockerFile και docker-compose.yml σε 3 διαφορετικα scriptakia
-
-στο τελος κανουμε docker build το app.py για να φτιαξουμε το Image της εργασιας και τελος κανουμε docker-compose up 
 
